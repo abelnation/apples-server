@@ -60,13 +60,6 @@ install_npm() {
 }
 
 install_grunt_cli() {
-    # setup required node modules
-    if [[ -z "$(command -v grunt)" ]]; then
-        echo "Installing grunt-cli..."
-        sudo npm install -g grunt-cli
-    else
-        echo "grunt-cli already installed"
-    fi
 }
 
 do_ec2_setup() {
@@ -93,7 +86,9 @@ do_ec2_setup() {
     install_nvm
     install_npm
 
-    install_grunt_cli
+    # setup required node modules
+    echo "Installing grunt-cli..."
+    sudo npm install -g grunt-cli
 
     echo "Installing nodemon..."
     npm install nodemon -g
@@ -113,10 +108,11 @@ do_local_setup() {
     install_nvm
     install_npm
 
-    install_grunt_cli
+    echo "Installing nodemon..."
+    sudo npm install nodemon -g
 
     echo "Installing nodemon..."
-    npm install nodemon -g
+    sudo npm install nodemon -g
 
     echo "Installing node dependencies..."
     npm install
