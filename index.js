@@ -1,3 +1,4 @@
 'use strict';
 
-var app = require('./src/app');
+/* jshint -W098 */
+var app = require('./lib/app');

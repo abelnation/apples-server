@@ -22,6 +22,7 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             },
             src: [
+                './index.js',
                 '<%= paths.src %>/**/*.js'
             ]
         },

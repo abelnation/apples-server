@@ -3,30 +3,51 @@
 do_ec2_setup() {
     echo "Setup: ec2"
 
-    curl https://raw.githubusercontent.com/creationix/nvm/v0.8.0/install.sh | sh
-
     # Install prereq packages
+
     # Install node version manager
     if [[ -e "~/.nvm/nvm.sh" ]]; then
         echo "Installing nvm..."
         curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-        if [[ -e "~/.bash_profile" ]]; then
-            echo "Sourcing ~/.bash_profile"
-            source "~/.bash_profile"
-        fi
-        if [[ -e "~/.profile" ]]; then
-            echo "Sourcing ~/.profile"
-            source "~/.profile"
-        fi
-        if [[ -e "~/.zshrc" ]]; then
-            echo "Sourcing ~/.zshrc"
-            source "~/.zshrc"
-        fi
+        source $HOME/.nvm/nvm.sh
+
+        # setup node
+        echo "Installing node v0.10..."
+        nvm install 0.10
+        echo "Setting default node v0.10..."
+        nvm alias default 0.10
+        nvm use 0.10
+
+        # if [[ -e "~/.bash_profile" ]]; then
+        #     echo "Sourcing ~/.bash_profile"
+        #     source "~/.bash_profile"
+        # fi
+        # if [[ -e "~/.profile" ]]; then
+        #     echo "Sourcing ~/.profile"
+        #     source "~/.profile"
+        # fi
+        # if [[ -e "~/.zshrc" ]]; then
+        #     echo "Sourcing ~/.zshrc"
+        #     source "~/.zshrc"
+        # fi
     else
         echo "nvm already installed"
     fi
 
-    sudo npm install nodemon -g
+    # setup links for sudo access to node/npm
+    # sudo ln -s /usr/local/bin/node /usr/bin/node
+    # sudo ln -s /usr/local/lib/node /usr/lib/node
+    # sudo ln -s /usr/local/bin/npm /usr/bin/npm
+    # sudo ln -s /usr/local/bin/node-waf /usr/bin/node-waf
+
+    if [[ -z "$(command -v npm)" ]]; then
+        echo "Installing npm"
+        curl -L https://npmjs.org/install.sh | sh
+    else
+        echo "npm already installed"
+    fi
+
+    npm install nodemon -g
     npm install
 }
 
@@ -85,7 +106,7 @@ main() {
     fi
 
     # Setup package overrides json file
-    cp ./bin/package_overrides.json.sample ./package_overrides.json
+    # cp ./bin/package_overrides.json.sample ./package_overrides.json
 }
 
 # Run script

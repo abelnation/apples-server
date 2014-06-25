@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
     var pkg = require('../helpers/read_package_helper')(grunt);
     return {
@@ -10,8 +12,9 @@ module.exports = function(grunt) {
             options: {
                 src: ".",
                 dest: "~/" + pkg.name,
-                host: pkg.hosts.dev,
+                host: "ec2-user@" + pkg.hosts.dev,
                 ssh: true,
+                privateKey: "/Users/aallison/.ssh/apples-01.pem",
             }
         }
     };
