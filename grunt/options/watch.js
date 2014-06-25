@@ -6,12 +6,11 @@ module.exports = function(grunt) {
         },
         devrsync: {
             files: [
-                './package.json',
-                '<%= paths.src %>/**',
-                '<%= paths.tests %>/**',
-                '<%= paths.scripts %>/**',
+                './**',
+                '!./node_modules/**',
+                '!./.git/**',
             ],
-            tasks: [ 'rsync:dev' ]
+            tasks: [ 'jshint', 'jscs', 'rsync:dev' ]
         },
         // sass: {
         //     files: '<%= pkg.paths.src %>/**/*.scss',

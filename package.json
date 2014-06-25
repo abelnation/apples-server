@@ -7,7 +7,7 @@
     "url": "https://github.com/abelnation/apples-server"
   },
   "hosts": {
-    "dev": "ec2-54-89-170-127.compute-1.amazonaws.com"
+    "dev": "ec2-54-197-201-202.compute-1.amazonaws.com"
   },
   "paths": {
     "src": "./lib",

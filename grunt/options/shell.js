@@ -1,7 +1,5 @@
 module.exports = function(grunt) {
-    var pkg = require('../helpers/read_package_helper')(grunt);
-    var port = pkg.dev_port || 80;
-
+    // var pkg = require('../helpers/read_package_helper')(grunt);
     var exports = {
         // no script tasks for now
         run_server: {
@@ -9,14 +7,14 @@ module.exports = function(grunt) {
                 stdout: true,
                 stderr: true,
             },
-            command : 'PORT=' + port + ' nodemon index.js',
+            command : 'nodemon index.js',
         },
         debug_server: {
             options: {
                 stdout: true,
                 stderr: true,
             },
-            command : 'PORT=' + port + ' nodemon --debug index.js',
+            command : 'nodemon --debug index.js',
         },
         inspector: {
             options: {

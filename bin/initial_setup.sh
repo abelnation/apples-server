@@ -3,12 +3,14 @@
 do_ec2_setup() {
     echo "Setup: ec2"
 
+    sudo yum update -y
+
     # Install prereq packages
 
     # Install node version manager
-    if [[ -e "~/.nvm/nvm.sh" ]]; then
+    if [[ ! -e "~/.nvm/nvm.sh" ]]; then
         echo "Installing nvm..."
-        curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+        curl https://raw.githubusercontent.com/creationix/nvm/v0.8.0/install.sh | sh
         source $HOME/.nvm/nvm.sh
 
         # setup node
@@ -17,19 +19,6 @@ do_ec2_setup() {
         echo "Setting default node v0.10..."
         nvm alias default 0.10
         nvm use 0.10
-
-        # if [[ -e "~/.bash_profile" ]]; then
-        #     echo "Sourcing ~/.bash_profile"
-        #     source "~/.bash_profile"
-        # fi
-        # if [[ -e "~/.profile" ]]; then
-        #     echo "Sourcing ~/.profile"
-        #     source "~/.profile"
-        # fi
-        # if [[ -e "~/.zshrc" ]]; then
-        #     echo "Sourcing ~/.zshrc"
-        #     source "~/.zshrc"
-        # fi
     else
         echo "nvm already installed"
     fi
@@ -105,8 +94,7 @@ main() {
         do_ec2_setup
     fi
 
-    # Setup package overrides json file
-    # cp ./bin/package_overrides.json.sample ./package_overrides.json
+    echo "PLEASE RESTART YOUR SHELL TO CONTINUE"
 }
 
 # Run script
