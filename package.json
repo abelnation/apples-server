@@ -47,6 +47,7 @@
     "nodemon": "^1.2.0",
     "errorhandler": "~1.1.1",
     "aws-sdk": "~2.0.3",
-    "redis": "~0.10.3"
+    "redis": "~0.10.3",
+    "hiredis": "~0.1.17"
   }
 }
