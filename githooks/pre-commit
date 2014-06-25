@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+echo "Bumping version..."
+grunt bump:build
+git add package.json
