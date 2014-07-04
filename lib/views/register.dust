@@ -1,0 +1,25 @@
+{>layout/}
+{<content}
+    <form action="/register" method="post">
+
+        <div>
+            <label for="frm_name">Name</label>
+            <input id="frm_name" name="name" type="text" placeholder="Enter your name" />
+        </div>
+
+        <div>
+            <label for="frm_username">Username</label>
+            <input id="frm_username" name="username" type="text" placeholder="Enter your name" />
+        </div>
+
+        <div>
+            <label for="frm_phone">Phone number e.g. (###) ### - ####</label>
+            <input id="frm_phone" name="phone" type="text" placeholder="555-555-5555" />
+        </div>
+
+        <div>
+            <input type="submit" value="Register" />
+        </div>
+
+    </form>
+{/content}

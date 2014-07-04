@@ -32,6 +32,22 @@ configure_redis_ec2() {
     sudo service redis-server start
 }
 
+install_mongodb_ec2() {
+    # see: http://michaelconnor.org/2013/07/install-mongodb-on-amazon-64-bit-linux/
+    sudo cp ./bin/10gen.repo /etc/yum.repos.d/
+    sudo yum install mongo-10gen mongo-10gen-server
+    sudo mkdir -p /data/db
+    sudo chown mongod:mongod /data/db
+    sudo service mongod start
+}
+
+install_mongodb_mac() {
+    brew install mongodb
+    mkdir -p /data/db
+    sudo chmod u+r /data/db
+    mongod &
+}
+
 install_nvm() {
     # Install node version manager
     if [[ ! -e "~/.nvm/nvm.sh" ]]; then
@@ -59,18 +75,26 @@ install_npm() {
     fi
 }
 
-install_grunt_cli() {
+cleanup_ec2() {
+    rm redis-*.tar.gz
+    rm -rf redis*/
 }
 
 do_ec2_setup() {
     echo "Setup: ec2"
 
     sudo yum -y update
+    sudo yum groupinstall "Development Tools"
 
     # Install prereq packages
 
     # Configure timezone
     configure_ec2_timezone
+
+    #
+    # MongoDB
+    #
+    install_mongodb_ec2
 
     #
     # Redis
@@ -88,13 +112,15 @@ do_ec2_setup() {
 
     # setup required node modules
     echo "Installing grunt-cli..."
-    sudo npm install -g grunt-cli
+    npm install -g grunt-cli
 
     echo "Installing nodemon..."
     npm install nodemon -g
 
     echo "Installing node dependencies..."
     npm install
+
+    cleanup_ec2
 }
 
 do_local_setup() {
@@ -104,6 +130,8 @@ do_local_setup() {
     brew update
 
     brew install redis
+
+    install_mongodb_mac
 
     install_nvm
     install_npm

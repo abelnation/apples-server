@@ -1,0 +1,25 @@
+{>layout/}
+{<content}
+    <form action="/register" method="post">
+
+        <div>
+            <label for="frm_description">Challenge Description</label>
+            <input id="frm_description" name="description" type="text" placeholder="What is your challenge?" />
+        </div>
+
+        <div>
+            <label for="frm_enddate">Deadline</label>
+            <input id="frm_enddate" name="enddate" type="date" placeholder="When does it end?" />
+        </div>
+
+        <div>
+            <label for="frm_invitees">Who's in the challenge? (usernames please, 1 per line)</label>
+            <textarea id="frm_invitees" name="invitees"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="Challenge!" />
+        </div>
+
+    </form>
+{/content}

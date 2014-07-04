@@ -2,9 +2,7 @@
     "requireCurlyBraces": [ "if", "else", "for", "while", "do" ],
     "requireSpaceAfterKeywords": [ "if", "else", "for", "while", "do", "switch", "return" ],
     "requireSpacesInFunctionExpression": {
-        "beforeOpeningCurlyBrace": true
-    },
-    "disallowSpacesInFunctionExpression": {
+        "beforeOpeningCurlyBrace": true,
         "beforeOpeningRoundBrace": true
     },
     "requireSpacesInsideObjectBrackets": "all",

@@ -14,7 +14,7 @@ module.exports = function(grunt) {
                 dest: "~/" + pkg.name,
                 host: "ec2-user@" + pkg.hosts.dev,
                 ssh: true,
-                privateKey: "/Users/aallison/.ssh/apples-02.pem",
+                privateKey: "/Users/aallison/.ssh/apples-04.pem",
             }
         }
     };

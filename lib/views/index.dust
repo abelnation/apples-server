@@ -1,0 +1,17 @@
+{>layout/}
+{<content}
+    <div>
+    {?session.username}
+        <a href="/signout">Sign Out</a>
+    {:else}
+        <a href="/signin">Sign In</a>
+    {/session.username}
+    </div>
+    <div>
+    {?user}
+        Hello, {user.name} ({user.username})!
+    {:else}
+        Hello!
+    {/user}
+    </div>
+{/content}

@@ -1,0 +1,15 @@
+{>layout/}
+{<content}
+    <form action="/signin" method="post">
+
+        <div>
+            <label for="frm_username">Username</label>
+            <input id="frm_username" name="username" type="text" placeholder="Enter your name" />
+        </div>
+
+        <div>
+            <input type="submit" value="Sign In" />
+        </div>
+
+    </form>
+{/content}
